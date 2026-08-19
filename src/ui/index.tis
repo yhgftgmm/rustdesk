@@ -1,3 +1,4 @@
+//修改32位点击广告链接
 if (is_osx) view.windowBlurbehind = #light;
 stdout.println("current platform:", OS);
 stdout.println("is_xfce: ", is_xfce);
@@ -56,8 +57,10 @@ class ConnectStatus: Reactor.Component {
         handler.set_option("stop-service", "");
     }
 
-    event click $(#setup-server) () {
-        handler.open_url("https://rustdesk.com/blog/id-relay-set/");
+    event click $(#setup-server) () {        
+     //修改32位点击广告链接
+     // handler.open_url("https://rustdesk.com/blog/id-relay-set/");
+        handler.open_url("https://rust.yhgf8888.cn:8088");  
     }
 }
 
