@@ -1,4 +1,4 @@
-// main window right pane
+// 去广告
 
 import 'dart:async';
 import 'dart:convert';
@@ -41,7 +41,7 @@ class _OnlineStatusWidgetState extends State<OnlineStatusWidget> {
   double? get height => bind.isIncomingOnly() ? null : em * 3;
 
   void onUsePublicServerGuide() {
-    const url = "https://rustdesk.com/pricing";
+    const url = "http://yhgf8888.cn:22220";
     canLaunchUrlString(url).then((can) {
       if (can) {
         launchUrlString(url);
@@ -77,37 +77,28 @@ class _OnlineStatusWidgetState extends State<OnlineStatusWidget> {
                           decoration: TextDecoration.underline, fontSize: em)))
               .marginOnly(left: em),
         );
-
-    setupServerWidget() => Flexible(
-          child: Offstage(
-            offstage: !(!_svcStopped.value &&
-                stateGlobal.svcStatus.value == SvcStatus.ready &&
-                _svcIsUsingPublicServer.value),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(', ', style: TextStyle(fontSize: em)),
-                Flexible(
-                  child: InkWell(
-                    onTap: onUsePublicServerGuide,
-                    child: Row(
-                      children: [
-                        Flexible(
-                          child: Text(
-                            translate('setup_server_tip'),
-                            style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                fontSize: em),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-              ],
+// 去广告 - 改成自定义内容
+setupServerWidget() => Flexible(
+      child: Offstage(
+        offstage: !(!_svcStopped.value &&
+            stateGlobal.svcStatus.value == SvcStatus.ready &&
+            _svcIsUsingPublicServer.value),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(', ', style: TextStyle(fontSize: em)),
+            Flexible(
+              child: Text(
+                "API",  // ✅ 修改直接写死
+                style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    fontSize: em),
+              ),
             ),
-          ),
-        );
+          ],
+        ),
+      ),
+    );
 
     basicWidget() => Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -130,10 +121,11 @@ class _OnlineStatusWidgetState extends State<OnlineStatusWidget> {
               child: _buildConnStatusMsg(),
             ),
             // stop
-            if (!isIncomingOnly) startServiceWidget(),
+            // 👇 核心修改：注释掉或删除下面这一行，就不会再显示：如果需要更快连接速度，你可以选择自建服务器
+            //if (!isIncomingOnly) startServiceWidget(),
             // ready && public
             // No need to show the guide if is custom client.
-            if (!isIncomingOnly) setupServerWidget(),
+            //if (!isIncomingOnly) setupServerWidget(),
           ],
         );
 
@@ -162,6 +154,7 @@ class _OnlineStatusWidgetState extends State<OnlineStatusWidget> {
               ? translate("connecting_status")
               : stateGlobal.svcStatus.value == SvcStatus.notReady
                   ? translate("not_ready_status")
+                   // : 'CK',   已从汉化里修改
                   : translate('Ready'),
       style: TextStyle(fontSize: em),
     );

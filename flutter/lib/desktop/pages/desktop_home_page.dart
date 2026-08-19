@@ -1,3 +1,4 @@
+//可去除设置、一次性密码、退出
 import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
@@ -255,28 +256,29 @@ class _DesktopHomePageState extends State<DesktopHomePage>
   }
 
   Widget buildPopupMenu(BuildContext context) {
-    final textColor = Theme.of(context).textTheme.titleLarge?.color;
-    RxBool hover = false.obs;
-    return InkWell(
-      onTap: DesktopTabPage.onAddSetting,
-      child: Tooltip(
-        message: translate('Settings'),
-        child: Obx(
+   final textColor = Theme.of(context).textTheme.titleLarge?.color;
+   RxBool hover = false.obs;
+   return InkWell(
+     onTap: DesktopTabPage.onAddSetting,
+     child: Tooltip(
+       message: translate('Settings'),
+       child: Obx(
           () => CircleAvatar(
-            radius: 15,
-            backgroundColor: hover.value
-                ? Theme.of(context).scaffoldBackgroundColor
-                : Theme.of(context).colorScheme.background,
-            child: Icon(
-              Icons.more_vert_outlined,
-              size: 20,
-              color: hover.value ? textColor : textColor?.withOpacity(0.5),
-            ),
-          ),
+           radius: 15,
+           backgroundColor: hover.value
+               ? Theme.of(context).scaffoldBackgroundColor
+               : Theme.of(context).colorScheme.background,
+           child: Icon(
+             Icons.more_vert_outlined,
+             size: 20,
+             color: hover.value ? textColor : textColor?.withOpacity(0.5),
+           ),
         ),
+       ),
       ),
-      onHover: (value) => hover.value = value,
-    );
+     onHover: (value) => hover.value = value,
+   );
+  //  return Container();  //修改 去除ID旁边的设置    
   }
 
   buildPasswordBoard(BuildContext context) {
@@ -358,6 +360,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
                           ),
                           onHover: (value) => refreshHover.value = value,
                         ).marginOnly(right: 8, top: 4),
+                   //一次性密码《        
                       if (!bind.isDisableSettings())
                         InkWell(
                           child: Tooltip(
@@ -375,7 +378,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
                           onTap: () => DesktopSettingPage.switch2page(
                               SettingsTabKey.safety),
                           onHover: (value) => editHover.value = value,
-                        ),
+                        ),  //一次性密码 》
                     ],
                   ),
                 ],
@@ -385,6 +388,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
         ],
       ),
     );
+    // return Container();//修改，去除一次性密码
   }
 
   buildTip(BuildContext context) {
@@ -550,22 +554,28 @@ class _DesktopHomePageState extends State<DesktopHomePage>
         );
       }
     }
-    if (bind.isIncomingOnly()) {
-      return Align(
-        alignment: Alignment.centerRight,
-        child: OutlinedButton(
-          onPressed: () {
-            SystemNavigator.pop(); // Close the application
-            // https://github.com/flutter/flutter/issues/66631
-            if (isWindows) {
-              exit(0);
-            }
-          },
-          child: Text(translate('Quit')),
-        ),
-      ).marginAll(14);
-    }
-    return Container();
+    // if (bind.isIncomingOnly()) {
+    //   return Align(
+    //     alignment: Alignment.centerRight,
+    //     child: OutlinedButton(
+    //       onPressed: () {
+    //         SystemNavigator.pop(); // Close the application
+    //         // https://github.com/flutter/flutter/issues/66631
+    //         if (isWindows) {
+    //           exit(0);
+    //         }
+    //       },
+    //       child: Text(translate('Quit')),
+    //     ),
+    //   ).marginAll(14);
+    // }
+    if (bind.isIncomingOnly()) {  // 修改，
+  return SizedBox(  // 修改，
+    height: 56,  // 修改，根据实际按钮高度调整
+    child: Container(),  // 修改，
+  ).marginAll(14);
+}
+    return Container();  // 修改，去除退出按钮
   }
 
   Widget buildInstallCard(String title, String content, String btnText,

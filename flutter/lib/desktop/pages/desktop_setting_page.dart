@@ -1,3 +1,4 @@
+//修改关于里的超链接
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -2267,7 +2268,7 @@ class _AboutState extends State<_About> {
                         .marginSymmetric(vertical: 4.0)),
               InkWell(
                   onTap: () {
-                    launchUrlString('https://rustdesk.com/privacy.html');
+                    launchUrlString('https://rustdesk.com/privacy.html');//修改 关于里的隐私声明链接
                   },
                   child: Text(
                     translate('Privacy Statement'),
@@ -2275,7 +2276,7 @@ class _AboutState extends State<_About> {
                   ).marginSymmetric(vertical: 4.0)),
               InkWell(
                   onTap: () {
-                    launchUrlString('https://rustdesk.com');
+                    launchUrlString('https://rustdesk.com');//修改 关于里的网站链接
                   },
                   child: Text(
                     translate('Website'),
