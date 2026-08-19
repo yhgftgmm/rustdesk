@@ -1,3 +1,4 @@
+//修改视图默认为小磁贴
 import 'dart:ui' as ui;
 
 import 'package:bot_toast/bot_toast.dart';
@@ -75,18 +76,38 @@ class _PeerTabPageState extends State<PeerTabPage>
     _loadLocalOptions();
   }
 
-  void _loadLocalOptions() {
-    final uiType = bind.getLocalFlutterOption(k: kOptionPeerCardUiType);
-    if (uiType != '') {
-      peerCardUiType.value = int.parse(uiType) == 0
-          ? PeerUiType.grid
-          : int.parse(uiType) == 1
-              ? PeerUiType.tile
-              : PeerUiType.list;
+  // void _loadLocalOptions() {
+  //   final uiType = bind.getLocalFlutterOption(k: kOptionPeerCardUiType);
+  //   if (uiType != '') {
+  //     peerCardUiType.value = int.parse(uiType) == 0
+  //         ? PeerUiType.grid
+  //         : int.parse(uiType) == 1
+  //             ? PeerUiType.tile
+  //             : PeerUiType.list;
+  //   }
+  //   hideAbTagsPanel.value =
+  //       bind.mainGetLocalOption(key: kOptionHideAbTagsPanel) == 'Y';
+  // }
+//修改视图默认为小磁贴
+void _loadLocalOptions() {
+  final uiType = bind.getLocalFlutterOption(k: kOptionPeerCardUiType);
+  if (uiType == '0') {
+    peerCardUiType.value = PeerUiType.grid;
+  } else if (uiType == '2') {
+    peerCardUiType.value = PeerUiType.list;
+  } else {
+    // ✅ 默认使用 1（大磁贴 / Small tiles）
+    peerCardUiType.value = PeerUiType.tile;
+    if (uiType != '1') {
+      bind.setLocalFlutterOption(
+        k: kOptionPeerCardUiType,
+        v: '1',
+      );
     }
-    hideAbTagsPanel.value =
-        bind.mainGetLocalOption(key: kOptionHideAbTagsPanel) == 'Y';
   }
+  hideAbTagsPanel.value =
+      bind.mainGetLocalOption(key: kOptionHideAbTagsPanel) == 'Y';
+}
 
   Future<void> handleTabSelection(int tabIndex) async {
     if (tabIndex < entries.length) {
