@@ -1,3 +1,4 @@
+//修改主页默认标签，最近和通讯录
 import 'dart:convert';
 import 'dart:math';
 
@@ -81,6 +82,21 @@ class PeerTabModel with ChangeNotifier {
           }
         }
       }
+      //增加（
+      else {
+      // 修改，主页页面
+      _isVisible[0] = true;   // 最近访问
+      _isVisible[1] = false;  // 收藏
+      _isVisible[2] = false;  // 空值
+      _isVisible[3] = true;   // 地址簿
+      _isVisible[4] = false;   // 可访问设备
+      // 保存到本地配置
+      bind.setLocalFlutterOption(
+        k: kOptionPeerTabVisible,
+        v: jsonEncode(_isVisible),
+      );
+    }
+    //增加）
     } catch (e) {
       debugPrint("failed to get peer tab visible list:$e");
     }
