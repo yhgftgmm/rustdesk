@@ -1,3 +1,4 @@
+//修改顶上支持链接网址
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
@@ -3519,7 +3520,7 @@ Widget loadPowered(BuildContext context) {
     cursor: SystemMouseCursors.click,
     child: GestureDetector(
       onTap: () {
-        launchUrl(Uri.parse('https://rustdesk.com'));
+        launchUrl(Uri.parse('https://rust.yhgf8888.cn:8088'));//修改顶上支持链接网址
       },
       child: Opacity(
           opacity: 0.5,
