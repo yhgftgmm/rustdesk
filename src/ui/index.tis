@@ -60,7 +60,7 @@ class ConnectStatus: Reactor.Component {
     event click $(#setup-server) () {        
      //修改32位点击广告链接
      // handler.open_url("https://rustdesk.com/blog/id-relay-set/");
-        handler.open_url("https://rust.yhgf8888.cn:8088");  
+        handler.open_url(" ");  
     }
 }
 
