@@ -3517,11 +3517,11 @@ Widget loadPowered(BuildContext context) {
     return SizedBox.shrink();
   }
   return MouseRegion(
-    cursor: SystemMouseCursors.click,
+    // cursor: SystemMouseCursors.click,  //修改点击
     child: GestureDetector(
-      onTap: () {
-        launchUrl(Uri.parse('https://rust.yhgf8888.cn:8088'));//修改顶上支持链接网址
-      },
+      // onTap: () {
+      //   launchUrl(Uri.parse('https://rust.yhgf8888.cn:8088'));//修改顶上支持链接网址
+      // },
       child: Opacity(
           opacity: 0.5,
           child: Text(
@@ -3530,7 +3530,9 @@ Widget loadPowered(BuildContext context) {
             style: Theme.of(context)
                 .textTheme
                 .bodySmall
-                ?.copyWith(fontSize: 9, decoration: TextDecoration.underline),
+                //修改 去除超链接
+                // ?.copyWith(fontSize: 9, decoration: TextDecoration.underline),
+                ?.copyWith(fontSize: 9),
           )),
     ),
   ).marginOnly(top: 6);
