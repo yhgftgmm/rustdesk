@@ -256,29 +256,29 @@ class _DesktopHomePageState extends State<DesktopHomePage>
   }
 
   Widget buildPopupMenu(BuildContext context) {
-   final textColor = Theme.of(context).textTheme.titleLarge?.color;
-   RxBool hover = false.obs;
-   return InkWell(
-     onTap: DesktopTabPage.onAddSetting,
-     child: Tooltip(
-       message: translate('Settings'),
-       child: Obx(
-          () => CircleAvatar(
-           radius: 15,
-           backgroundColor: hover.value
-               ? Theme.of(context).scaffoldBackgroundColor
-               : Theme.of(context).colorScheme.background,
-           child: Icon(
-             Icons.more_vert_outlined,
-             size: 20,
-             color: hover.value ? textColor : textColor?.withOpacity(0.5),
-           ),
-        ),
-       ),
-      ),
-     onHover: (value) => hover.value = value,
-   );
-  //  return Container();  //修改 去除ID旁边的设置    
+   // final textColor = Theme.of(context).textTheme.titleLarge?.color;
+   // RxBool hover = false.obs;
+   // return InkWell(
+   //   onTap: DesktopTabPage.onAddSetting,
+   //   child: Tooltip(
+   //     message: translate('Settings'),
+   //     child: Obx(
+   //        () => CircleAvatar(
+   //         radius: 15,
+   //         backgroundColor: hover.value
+   //             ? Theme.of(context).scaffoldBackgroundColor
+   //             : Theme.of(context).colorScheme.background,
+   //         child: Icon(
+   //           Icons.more_vert_outlined,
+   //           size: 20,
+   //           color: hover.value ? textColor : textColor?.withOpacity(0.5),
+   //         ),
+   //      ),
+   //     ),
+   //    ),
+   //   onHover: (value) => hover.value = value,
+   // );
+    return Container();  //修改 去除ID旁边的设置    
   }
 
   buildPasswordBoard(BuildContext context) {
@@ -292,103 +292,103 @@ class _DesktopHomePageState extends State<DesktopHomePage>
   }
 
   buildPasswordBoard2(BuildContext context, ServerModel model) {
-      //一次性密码《 
-    RxBool refreshHover = false.obs;
-    RxBool editHover = false.obs;
-    final textColor = Theme.of(context).textTheme.titleLarge?.color;
-    final showOneTime = model.approveMode != 'click' &&
-        model.verificationMethod != kUsePermanentPassword;
-    return Container(
-      margin: EdgeInsets.only(left: 20.0, right: 16, top: 13, bottom: 13),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.baseline,
-        textBaseline: TextBaseline.alphabetic,
-        children: [
-          Container(
-            width: 2,
-            height: 52,
-            decoration: BoxDecoration(color: MyTheme.accent),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 7),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AutoSizeText(
-                    translate("One-time Password"),
-                    style: TextStyle(
-                        fontSize: 14, color: textColor?.withOpacity(0.5)),
-                    maxLines: 1,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: GestureDetector(
-                          onDoubleTap: () {
-                            if (showOneTime) {
-                              Clipboard.setData(
-                                  ClipboardData(text: model.serverPasswd.text));
-                              showToast(translate("Copied"));
-                            }
-                          },
-                          child: TextFormField(
-                            controller: model.serverPasswd,
-                            readOnly: true,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              contentPadding:
-                                  EdgeInsets.only(top: 14, bottom: 10),
-                            ),
-                            style: TextStyle(fontSize: 15),
-                          ).workaroundFreezeLinuxMint(),
-                        ),
-                      ),
-                      if (showOneTime)
-                        AnimatedRotationWidget(
-                          onPressed: () => bind.mainUpdateTemporaryPassword(),
-                          child: Tooltip(
-                            message: translate('Refresh Password'),
-                            child: Obx(() => RotatedBox(
-                                quarterTurns: 2,
-                                child: Icon(
-                                  Icons.refresh,
-                                  color: refreshHover.value
-                                      ? textColor
-                                      : Color(0xFFDDDDDD),
-                                  size: 22,
-                                ))),
-                          ),
-                          onHover: (value) => refreshHover.value = value,
-                        ).marginOnly(right: 8, top: 4),   
-                      if (!bind.isDisableSettings())
-                        InkWell(
-                          child: Tooltip(
-                            message: translate('Change Password'),
-                            child: Obx(
-                              () => Icon(
-                                Icons.edit,
-                                color: editHover.value
-                                    ? textColor
-                                    : Color(0xFFDDDDDD),
-                                size: 22,
-                              ).marginOnly(right: 8, top: 4),
-                            ),
-                          ),
-                          onTap: () => DesktopSettingPage.switch2page(
-                              SettingsTabKey.safety),
-                          onHover: (value) => editHover.value = value,
-                        ),  
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );  //一次性密码 》
-    // return Container();//修改，去除一次性密码
+    //一次性密码《 
+    // RxBool refreshHover = false.obs;
+    // RxBool editHover = false.obs;
+    // final textColor = Theme.of(context).textTheme.titleLarge?.color;
+    // final showOneTime = model.approveMode != 'click' &&
+    //     model.verificationMethod != kUsePermanentPassword;
+    // return Container(
+    //   margin: EdgeInsets.only(left: 20.0, right: 16, top: 13, bottom: 13),
+    //   child: Row(
+    //     crossAxisAlignment: CrossAxisAlignment.baseline,
+    //     textBaseline: TextBaseline.alphabetic,
+    //     children: [
+    //       Container(
+    //         width: 2,
+    //         height: 52,
+    //         decoration: BoxDecoration(color: MyTheme.accent),
+    //       ),
+    //       Expanded(
+    //         child: Padding(
+    //           padding: const EdgeInsets.only(left: 7),
+    //           child: Column(
+    //             crossAxisAlignment: CrossAxisAlignment.start,
+    //             children: [
+    //               AutoSizeText(
+    //                 translate("One-time Password"),
+    //                 style: TextStyle(
+    //                     fontSize: 14, color: textColor?.withOpacity(0.5)),
+    //                 maxLines: 1,
+    //               ),
+    //               Row(
+    //                 children: [
+    //                   Expanded(
+    //                     child: GestureDetector(
+    //                       onDoubleTap: () {
+    //                         if (showOneTime) {
+    //                           Clipboard.setData(
+    //                               ClipboardData(text: model.serverPasswd.text));
+    //                           showToast(translate("Copied"));
+    //                         }
+    //                       },
+    //                       child: TextFormField(
+    //                         controller: model.serverPasswd,
+    //                         readOnly: true,
+    //                         decoration: InputDecoration(
+    //                           border: InputBorder.none,
+    //                           contentPadding:
+    //                               EdgeInsets.only(top: 14, bottom: 10),
+    //                         ),
+    //                         style: TextStyle(fontSize: 15),
+    //                       ).workaroundFreezeLinuxMint(),
+    //                     ),
+    //                   ),
+    //                   if (showOneTime)
+    //                     AnimatedRotationWidget(
+    //                       onPressed: () => bind.mainUpdateTemporaryPassword(),
+    //                       child: Tooltip(
+    //                         message: translate('Refresh Password'),
+    //                         child: Obx(() => RotatedBox(
+    //                             quarterTurns: 2,
+    //                             child: Icon(
+    //                               Icons.refresh,
+    //                               color: refreshHover.value
+    //                                   ? textColor
+    //                                   : Color(0xFFDDDDDD),
+    //                               size: 22,
+    //                             ))),
+    //                       ),
+    //                       onHover: (value) => refreshHover.value = value,
+    //                     ).marginOnly(right: 8, top: 4),     
+    //                   if (!bind.isDisableSettings())
+    //                     InkWell(
+    //                       child: Tooltip(
+    //                         message: translate('Change Password'),
+    //                         child: Obx(
+    //                           () => Icon(
+    //                             Icons.edit,
+    //                             color: editHover.value
+    //                                 ? textColor
+    //                                 : Color(0xFFDDDDDD),
+    //                             size: 22,
+    //                           ).marginOnly(right: 8, top: 4),
+    //                         ),
+    //                       ),
+    //                       onTap: () => DesktopSettingPage.switch2page(
+    //                           SettingsTabKey.safety),
+    //                       onHover: (value) => editHover.value = value,
+    //                     ),  
+    //                 ],
+    //               ),
+    //             ],
+    //           ),
+    //         ),
+    //       ),
+    //     ],
+    //   ),
+    // );   //一次性密码 》
+     return Container();  //修改，去除一次性密码
   }
 
   buildTip(BuildContext context) {
