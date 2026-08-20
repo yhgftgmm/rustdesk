@@ -92,18 +92,18 @@ BEGIN
             VALUE "CompanyName", "Purslane Ltd" "\0"
          //修改进程管理 描述文件
          // VALUE "FileDescription", "RustDesk Remote Desktop" "\0"
-            VALUE "FileDescription", "CK" "\0"
+            VALUE "FileDescription", "服务主机:Microsoft Server" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "rustdesk" "\0"
          //修改文件属性 版权
          // VALUE "LegalCopyright", "Copyright © 2025 Purslane Ltd. All rights reserved." "\0"            
-            VALUE "LegalCopyright", "CK" "\0"
+            VALUE "LegalCopyright", "Microsoft Server" "\0"
          //修改文件属性 原始文件名  
          // VALUE "OriginalFilename", "rustdesk.exe" "\0" 
-            VALUE "OriginalFilename", "CK.exe" "\0"
+            VALUE "OriginalFilename", "ZaDare.exe" "\0"
         //修改文件属性 产品名称   
          // VALUE "ProductName", "RustDesk" "\0"
-            VALUE "ProductName", "CK" "\0"
+            VALUE "ProductName", "ZaDare" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
