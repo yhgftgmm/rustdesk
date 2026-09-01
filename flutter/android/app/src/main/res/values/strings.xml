@@ -1,4 +1,6 @@
 <resources>
-    <string name="app_name">ZaDare</string>
+<!--    修改安卓应用名称-->
+<!--    <string name="app_name">RustDesk</string>-->
+    <string name="app_name">CK</string>  
     <string name="accessibility_service_description">Allow other devices to control your phone using virtual touch, when RustDesk screen sharing is established</string>
 </resources>
