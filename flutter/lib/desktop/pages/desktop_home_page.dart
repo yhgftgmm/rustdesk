@@ -292,7 +292,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
   }
 
   buildPasswordBoard2(BuildContext context, ServerModel model) {
-      //一次性密码《 
+       //一次性密码《      
     RxBool refreshHover = false.obs;
     RxBool editHover = false.obs;
     final textColor = Theme.of(context).textTheme.titleLarge?.color;
@@ -360,7 +360,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
                                 ))),
                           ),
                           onHover: (value) => refreshHover.value = value,
-                        ).marginOnly(right: 8, top: 4),   
+                        ).marginOnly(right: 8, top: 4),  
                       if (!bind.isDisableSettings())
                         InkWell(
                           child: Tooltip(
@@ -378,7 +378,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
                           onTap: () => DesktopSettingPage.switch2page(
                               SettingsTabKey.safety),
                           onHover: (value) => editHover.value = value,
-                        ),  
+                        ), 
                     ],
                   ),
                 ],
@@ -387,8 +387,8 @@ class _DesktopHomePageState extends State<DesktopHomePage>
           ),
         ],
       ),
-    );  //一次性密码 》
-    // return Container();//修改，去除一次性密码
+    ); //一次性密码 》
+    // return Container();  //修改，去除一次性密码
   }
 
   buildTip(BuildContext context) {
